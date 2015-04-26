@@ -8,6 +8,7 @@ CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3
 
 ORDERED_OBJS += \
 "./blink.obj" \
+"./cw.obj" \
 "../lnk_msp430fr5969.cmd" \
 $(GEN_CMDS__FLAG) \
 -l"libmath.a" \
@@ -147,8 +148,8 @@ TestCode.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "blink.pp" 
-	-$(RM) "blink.obj" 
+	-$(RM) "blink.pp" "cw.pp" 
+	-$(RM) "blink.obj" "cw.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

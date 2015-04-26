@@ -1,0 +1,432 @@
+
+**** Clean-only build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k clean 
+DEL /F  "TestCode.out"  "TestCode.hex" 
+Could Not Find C:\Users\Administrator\workspace_v6_1\SpexHabSoftware\TestCode\Debug\TestCode.out
+DEL /F "blink.pp" 
+DEL /F "blink.obj" 
+Could Not Find C:\Users\Administrator\workspace_v6_1\SpexHabSoftware\TestCode\Debug\blink.obj
+'Finished clean'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 40: warning #1-D: last line of file ends without a newline
+'Finished building: ../blink.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10371-D: (ULP 1.1) Detected no uses of low power mode state changing instructions
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+gmake: Nothing to be done for `all'.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 172: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+'Finished building: ../blink.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+warning #10421-D: For FRAM devices running at higher than 8MHz, FRAM waitstate needs to be configured accordingly.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 156: error #171: expected a declaration
+"../blink.c", line 170: error #609: this pragma must immediately precede a declaration
+At end of source: warning #12-D: parsing restarts here after previous syntax error
+2 errors detected in the compilation of "../blink.c".
+
+>> Compilation failure
+gmake: *** [blink.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 182: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+'Finished building: ../blink.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+warning #10421-D: For FRAM devices running at higher than 8MHz, FRAM waitstate needs to be configured accordingly.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 182: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+'Finished building: ../blink.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+warning #10421-D: For FRAM devices running at higher than 8MHz, FRAM waitstate needs to be configured accordingly.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 183: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+'Finished building: ../blink.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+warning #10421-D: For FRAM devices running at higher than 8MHz, FRAM waitstate needs to be configured accordingly.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"..\LED1.h", line 2: error #11-D: unrecognized preprocessing directive
+
+>> Compilation failure
+"..\LED1.h", line 2: error #11-D: unrecognized preprocessing directive
+"../blink.c", line 182: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"../blink.c", line 196: warning #78-D: this declaration has no storage class or type specifier
+"../blink.c", line 194: warning #1111-D: pragma vector can only be applied to a function definition, not "__Interrupt" (declared at line 196)
+"../blink.c", line 196: error #66: expected a ";"
+At end of source: warning #12-D: parsing restarts here after previous syntax error
+3 errors detected in the compilation of "../blink.c".
+gmake: *** [blink.obj] Error 1
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"..\LED1.h", line 2: error #11-D: unrecognized preprocessing directive
+"../cw.c", line 66: error #41: expected an identifier
+"../cw.c", line 66: error #66: expected a ";"
+"../cw.c", line 95: warning #12-D: parsing restarts here after previous syntax error
+"../cw.c", line 96: error #171: expected a declaration
+"../cw.c", line 99: warning #12-D: parsing restarts here after previous syntax error
+"../cw.c", line 101: warning #78-D: this declaration has no storage class or type specifier
+"../cw.c", line 102: warning #78-D: this declaration has no storage class or type specifier
+"../cw.c", line 102: error #66: expected a ";"
+"../cw.c", line 103: error #171: expected a declaration
+"../cw.c", line 105: warning #78-D: this declaration has no storage class or type specifier
+"../cw.c", line 109: error #171: expected a declaration
+At end of source: warning #12-D: parsing restarts here after previous syntax error
+7 errors detected in the compilation of "../cw.c".
+
+>> Compilation failure
+gmake: *** [cw.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 182: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"../blink.c", line 196: warning #78-D: this declaration has no storage class or type specifier
+"../blink.c", line 194: warning #1111-D: pragma vector can only be applied to a function definition, not "__Interrupt" (declared at line 196)
+"../blink.c", line 196: error #66: expected a ";"
+At end of source: warning #12-D: parsing restarts here after previous syntax error
+1 error detected in the compilation of "../blink.c".
+
+>> Compilation failure
+gmake: *** [blink.obj] Error 1
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 66: error #41: expected an identifier
+"../cw.c", line 66: error #66: expected a ";"
+"../cw.c", line 95: warning #12-D: parsing restarts here after previous syntax error
+"../cw.c", line 96: error #171: expected a declaration
+"../cw.c", line 99: warning #12-D: parsing restarts here after previous syntax error
+"../cw.c", line 101: warning #78-D: this declaration has no storage class or type specifier
+"../cw.c", line 102: warning #78-D: this declaration has no storage class or type specifier
+"../cw.c", line 102: error #66: expected a ";"
+"../cw.c", line 103: error #171: expected a declaration
+"../cw.c", line 105: warning #78-D: this declaration has no storage class or type specifier
+"../cw.c", line 109: error #171: expected a declaration
+At end of source: warning #12-D: parsing restarts here after previous syntax error
+6 errors detected in the compilation of "../cw.c".
+
+>> Compilation failure
+gmake: *** [cw.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 182: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"../blink.c", line 196: warning #78-D: this declaration has no storage class or type specifier
+"../blink.c", line 194: warning #1111-D: pragma vector can only be applied to a function definition, not "__Interrupt" (declared at line 196)
+"../blink.c", line 196: error #66: expected a ";"
+At end of source: warning #12-D: parsing restarts here after previous syntax error
+1 error detected in the compilation of "../blink.c".
+
+>> Compilation failure
+gmake: *** [blink.obj] Error 1
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 66: error #41: expected an identifier
+"../cw.c", line 67: error #20: identifier "CCTL0" is undefined
+"../cw.c", line 69: error #20: identifier "CCR0" is undefined
+"../cw.c", line 72: error #66: expected a ";"
+"../cw.c", line 92: warning #225-D: function "LED_ON" declared implicitly
+"../cw.c", line 93: error #18: expected a ")"
+"../cw.c", line 103: warning #12-D: parsing restarts here after previous syntax error
+"../cw.c", line 103: error #128: expected a statement
+"../cw.c", line 105: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 105: error #20: identifier "DAHTIME" is undefined
+"../cw.c", line 112: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 114: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 116: warning #994-D: missing return statement at end of non-void function "cwSend"
+"../cw.c", line 75: warning #179-D: variable "sinIndex" was declared but never referenced
+"../cw.c", line 83: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+
+>> Compilation failure
+"../cw.c", line 85: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 110: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+10 errors detected in the compilation of "../cw.c".
+gmake: *** [cw.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 182: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"../blink.c", line 196: warning #78-D: this declaration has no storage class or type specifier
+"../blink.c", line 194: warning #1111-D: pragma vector can only be applied to a function definition, not "__Interrupt" (declared at line 196)
+"../blink.c", line 196: error #66: expected a ";"
+At end of source: warning #12-D: parsing restarts here after previous syntax error
+1 error detected in the compilation of "../blink.c".
+
+>> Compilation failure
+gmake: *** [blink.obj] Error 1
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 67: error #41: expected an identifier
+"../cw.c", line 68: error #20: identifier "CCTL0" is undefined
+"../cw.c", line 70: error #20: identifier "CCR0" is undefined
+"../cw.c", line 73: error #66: expected a ";"
+"../cw.c", line 93: warning #225-D: function "LED_ON" declared implicitly
+"../cw.c", line 94: error #18: expected a ")"
+"../cw.c", line 104: warning #12-D: parsing restarts here after previous syntax error
+"../cw.c", line 104: error #128: expected a statement
+"../cw.c", line 106: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 113: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 115: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 117: warning #994-D: missing return statement at end of non-void function "cwSend"
+"../cw.c", line 76: warning #179-D: variable "sinIndex" was declared but never referenced
+"../cw.c", line 84: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 86: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 111: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+9 errors detected in the compilation of "../cw.c".
+
+>> Compilation failure
+gmake: *** [cw.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 182: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"../blink.c", line 196: warning #78-D: this declaration has no storage class or type specifier
+"../blink.c", line 194: warning #1111-D: pragma vector can only be applied to a function definition, not "__Interrupt" (declared at line 196)
+"../blink.c", line 196: error #66: expected a ";"
+At end of source: warning #12-D: parsing restarts here after previous syntax error
+1 error detected in the compilation of "../blink.c".
+
+>> Compilation failure
+gmake: *** [blink.obj] Error 1
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 67: error #41: expected an identifier
+"../cw.c", line 68: error #20: identifier "CCTL0" is undefined
+"../cw.c", line 70: error #20: identifier "CCR0" is undefined
+"../cw.c", line 73: error #66: expected a ";"
+"../cw.c", line 93: warning #225-D: function "LED_ON" declared implicitly
+"../cw.c", line 94: error #18: expected a ")"
+"../cw.c", line 104: warning #12-D: parsing restarts here after previous syntax error
+"../cw.c", line 104: error #128: expected a statement
+"../cw.c", line 106: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 113: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 115: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 117: warning #994-D: missing return statement at end of non-void function "cwSend"
+"../cw.c", line 76: warning #179-D: variable "sinIndex" was declared but never referenced
+"../cw.c", line 84: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 86: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 111: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+9 errors detected in the compilation of "../cw.c".
+
+>> Compilation failure
+gmake: *** [cw.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 182: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+'Finished building: ../blink.c'
+' '
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 67: error #41: expected an identifier
+"../cw.c", line 68: error #20: identifier "CCTL0" is undefined
+"../cw.c", line 70: error #20: identifier "CCR0" is undefined
+"../cw.c", line 73: error #66: expected a ";"
+"../cw.c", line 93: warning #225-D: function "LED_ON" declared implicitly
+"../cw.c", line 94: error #18: expected a ")"
+"../cw.c", line 104: warning #12-D: parsing restarts here after previous syntax error
+"../cw.c", line 104: error #128: expected a statement
+"../cw.c", line 106: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 113: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 115: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 117: warning #994-D: missing return statement at end of non-void function "cwSend"
+"../cw.c", line 76: warning #179-D: variable "sinIndex" was declared but never referenced
+"../cw.c", line 84: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 86: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 111: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+9 errors detected in the compilation of "../cw.c".
+
+>> Compilation failure
+gmake: *** [cw.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" -k all 
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power=all --advice:hw_config=all -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 67: error #41: expected an identifier
+"../cw.c", line 68: error #20: identifier "CCTL0" is undefined
+"../cw.c", line 70: error #20: identifier "CCR0" is undefined
+"../cw.c", line 93: warning #225-D: function "LED_ON" declared implicitly
+"../cw.c", line 94: error #18: expected a ")"
+"../cw.c", line 104: warning #12-D: parsing restarts here after previous syntax error
+"../cw.c", line 104: error #128: expected a statement
+"../cw.c", line 106: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 113: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 115: error #110: expression preceding parentheses of apparent call must have (pointer-to-) function type
+"../cw.c", line 117: warning #994-D: missing return statement at end of non-void function "cwSend"
+"../cw.c", line 76: warning #179-D: variable "sinIndex" was declared but never referenced
+"../cw.c", line 84: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 86: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 111: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+8 errors detected in the compilation of "../cw.c".
+
+>> Compilation failure
+gmake: *** [cw.obj] Error 1
+gmake: Target `all' not remade because of errors.
+
+**** Build Finished ****
