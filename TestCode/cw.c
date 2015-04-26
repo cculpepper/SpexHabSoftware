@@ -6,22 +6,16 @@
 //#include "LED1.h"
 #define DITTIME 100 //Time in milliseconds for a dit
 #define DAHTIME (3 * (DITTIME))
-#ifdef DAC
-#define CLOCKRATE 48000000
-#define CWFREQ 600
-#define CWDELAY 1000000000*((1/CWFREQ)*(1/SINUS_LENGTH))
+char MSP430Delay(int cycles){
+	TA1CCTL0 |= CCIE; // CCR0 interrupt enabled
 
-#define DITCYCLES ((DITTIME)*CWFREQ) 
-#define DAHCYCLES ((DAHTIME)*CWFREQ) 
-/*#define DITCYCLES (DITTIME * CWFREQ)*/
-/*#define DAHCYCLES (DAHTIME * CWFREQ)*/
-
-
-const short CWSinusOutputData[SINUS_LENGTH] = {
-2248u, 2447u, 2642u, 2831u, 3013u, 3185u, 3347u, 3496u, 3631u, 3750u, 3854u, 3940u, 4007u, 4056u, 4086u, 4096u, 4086u, 4056u, 4007u, 3940u, 3854u, 3750u, 3631u, 3496u, 3347u, 3185u, 3013u, 2831u, 2642u, 2447u, 2248u, 2048u, 1847u, 1648u, 1453u, 1264u, 1082u, 910u, 748u, 599u, 464u, 345u, 241u, 155u, 88u, 39u, 9u, 0u, 9u, 39u, 88u, 155u, 241u, 345u, 464u, 599u, 748u, 910u, 1082u, 1264u, 1453u, 1648u, 1847u, 2048u,
-
-};
-#endif
+	  TA1CCR0 = cycles;
+	  //TA1CTL |= TASSEL_1;	//Use ACLK as source for timer
+	    TA1CTL |= MC_1;	//Use UP mode timer
+	  _BIS_SR(LPM0_bits + GIE);                // Enter LPM0 w/ Interrupt
+	  TA1CCTL0 = ~CCIE;
+	  return 0;
+}
 const char CwLetterData[26] = {
 	 /* 3 bit length, 5 bits of data. Can do everything but symbols.....*/ 
 	/* Bits are right aligned, 1 is dit, 0 is dah a is 10 */ 
@@ -63,17 +57,11 @@ const char CwNumberData[10] = {
 	0xA3,
 	0xA1,
 	0xA0};
-#define MSP430Delay 1
-void MSP430Delay(int cycles){
-	CCTL0 = CCIE; // CCR0 interrupt enabled
 
-	  CCR0 = cycles;
-	  _BIS_SR(LPM0_bits + GIE);                // Enter LPM0 w/ Interrupt
-	  CCTL0 = ~CCIE;
-}
+
+
 char cwSend(char* data, int len){
 	//sends stuff...
-	int sinIndex;
 	char charLen;
 	char currChar;
 	char* cwDataPtr;
@@ -90,29 +78,29 @@ char cwSend(char* data, int len){
 
 		charLen = (currChar >> 5); /* This is the length of the morse code char, in the top 3 bits*/ 
 		while ( charLen > 0 ){
-			LED_ON();
-			if (currChar & ( 0x80 >> (5-charLen)){
+			LED1_ON();
+			if (currChar & ( 0x80 >> (5-charLen))){
 				/* Wait for a dit*/
-				MSP430Delay(DITTIME);
+				//MSP430Delay(DITTIME);
 			} else {
-				MSP430Delay(DAHTIME);
+				//MSP430Delay(DAHTIME);
 			}
 			LED1_OFF();
 			/* A little bit crazy, passes to the sender, the current bit. Ands the current morse byte with a shifted 1  to get the current character*/ 
-			MSP430Delay(DITTIME);
+			//MSP430Delay(DITTIME);
 			charLen--;
 		}
 		cwDataPtr++;
-		MSP430Delay(DAHTIME);
+		//MSP430Delay(DAHTIME);
 
 
 
 	}
 	for (charLen = 0; charLen < 10; charLen++){
 		LED1_ON();
-		MSP430Delay(5000);
+		//MSP430Delay(5000);
 		LED1_OFF();
-		MSP430Delay(5000);
+		//MSP430Delay(5000);
 	}
 }
  

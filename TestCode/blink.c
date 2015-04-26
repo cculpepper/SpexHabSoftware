@@ -160,10 +160,11 @@ int main(void)
   LED1INIT();
            // Enable USCI_A0 RX interrupt
 
-  __bis_SR_register(LPM3_bits | GIE);       // Enter LPM3, interrupts enabled
+  //__bis_SR_register(LPM3_bits | GIE);       // Enter LPM3, interrupts enabled
 
 
-  __no_operation();                         // For debugger
+  __no_operation(); // For debugger
+  cwSend("AB1TJTEST", 9);
 }
 
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
