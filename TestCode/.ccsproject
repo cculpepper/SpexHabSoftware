@@ -10,4 +10,5 @@
 	<rts value="libc.a"/>
 	<createSlaveProjects value=""/>
 	<templateProperties value="id=com.ti.ccstudio.project.templates.blink_msp430,"/>
+	<isTargetManual value="false"/>
 </projectOptions>

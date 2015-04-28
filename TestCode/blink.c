@@ -192,10 +192,14 @@ void __attribute__ ((interrupt(USCI_A0_VECTOR))) USCI_A0_ISR (void)
 }
 // Timer A0 interrupt service routine
 
-#pragma vector=TIMER0_A0_VECTOR
-
+#pragma vector=TIMER1_A0_VECTOR
 __interrupt void Timer_A_Delay (void){
 
-	asm(" nop");
+	LPM0_EXIT;
 
+}
+#pragma vector= TRAPINT_VECTOR
+__interrupt void TRAPINT_ISR(void)
+{
+  __no_operation();
 }

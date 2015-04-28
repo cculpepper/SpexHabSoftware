@@ -1013,3 +1013,143 @@ java.nio.channels.ClosedByInterruptException
 !ENTRY com.ti.ccstudio.debug 1 0 2015-04-26 16:28:18.350
 !MESSAGE DS_ERROR: MSP430: GEL: Encountered a problem loading file: C:\Users\Administrator\workspace_v6_1\SpexHabSoftware\TestCode\Debug\TestCode.out Could not open file
 
+!SESSION 2015-04-27 18:36:24.942 -----------------------------------------------
+eclipse.buildId=4.4.1.M20140925-0400
+java.version=1.7.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2015-04-27 18:37:27.436
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2015-04-27 18:37:27.567
+!MESSAGE debugServerDir=C:/ti/ccsv6/ccs_base/DebugServer
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-27 20:07:41.377
+!MESSAGE Indexed 'TestCode' (2 sources, 7 headers) in 3.97 sec: 916 declarations; 1,504 references; 0 unresolved inclusions; 2 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 21:09:14.498
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: Interface Communication error
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 21:09:15.045
+!MESSAGE DS_ERROR: Error initializing emulator:
+Interface Communication error
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 21:42:42.995
+!MESSAGE DS_ERROR: MSP430: JTAG Communication Error 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 21:42:43.010
+!MESSAGE DS_ERROR: MSP430: Breakpoint Manager: Could not write device Register
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 21:42:43.026
+!MESSAGE DS_ERROR: MSP430: Breakpoint Manager: Could not write device Register
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 21:51:12.135
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: No USB FET was found
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 21:51:12.417
+!MESSAGE DS_ERROR: Error initializing emulator:
+No USB FET was found
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-27 22:09:19.725
+!MESSAGE Indexed 'TestCode' (2 sources, 7 headers) in 0.478 sec: 918 declarations; 1,520 references; 0 unresolved inclusions; 3 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:10:52.395
+!MESSAGE DS_ERROR: MSP430: GEL: Encountered a problem loading file: C:\Users\Administrator\workspace_v6_1\SpexHabSoftware\TestCode\Debug\TestCode.out Could not open file
+
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2015-04-27 22:10:52.427
+!MESSAGE Request for monitor: 'RequestMonitor (com.ti.ccstudio.leru.model.LervmBuddy$1@1207236): Status ERROR: com.ti.ccstudio.debug code=20001  com.ti.ccstudio.debug.launch.LaunchValidationException' resulted in an error.
+!SUBENTRY 1 com.ti.ccstudio.debug 4 20001 2015-04-27 22:10:52.427
+!MESSAGE 
+!STACK 0
+com.ti.ccstudio.debug.launch.LaunchValidationException
+	at com.ti.ccstudio.debug.service.ApplicationService$2$1.handleFailure(ApplicationService.java:267)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:378)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:303)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:11:11.169
+!MESSAGE DS_ERROR: MSP430: GEL: Encountered a problem loading file: C:\Users\Administrator\workspace_v6_1\SpexHabSoftware\TestCode\Debug\TestCode.out Could not open file
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:11:36.211
+!MESSAGE DS_ERROR: MSP430: GEL: Encountered a problem loading file: C:\Users\Administrator\workspace_v6_1\SpexHabSoftware\TestCode\Debug\TestCode.out Could not open file
+
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2015-04-27 22:11:36.226
+!MESSAGE Request for monitor: 'RequestMonitor (com.ti.ccstudio.leru.model.LervmBuddy$1@7e1230): Status ERROR: com.ti.ccstudio.debug code=20001  com.ti.ccstudio.debug.launch.LaunchValidationException' resulted in an error.
+!SUBENTRY 1 com.ti.ccstudio.debug 4 20001 2015-04-27 22:11:36.226
+!MESSAGE 
+!STACK 0
+com.ti.ccstudio.debug.launch.LaunchValidationException
+	at com.ti.ccstudio.debug.service.ApplicationService$2$1.handleFailure(ApplicationService.java:267)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor.handleCompleted(RequestMonitor.java:378)
+	at org.eclipse.cdt.dsf.concurrent.RequestMonitor$2.run(RequestMonitor.java:303)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-27 22:13:06.467
+!MESSAGE Indexed 'TestCode' (2 sources, 7 headers) in 0.547 sec: 918 declarations; 1,520 references; 0 unresolved inclusions; 3 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:31:07.097
+!MESSAGE DS_ERROR: MSP430: JTAG Communication Error 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:33:38.382
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: No USB FET was found
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:33:38.710
+!MESSAGE DS_ERROR: Error initializing emulator:
+No USB FET was found
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2015-04-27 22:33:46.194
+!MESSAGE Request for monitor: 'RequestMonitor (com.ti.ccstudio.leru.model.LervmBuddy$1@805aa): Status ERROR: com.ti.ccstudio.debug code=20001 com.ti.debug.engine.IApplication$InitializationException: MSP430: Error initializing emulator: No USB FET was found
+ com.ti.ccstudio.debug.launch.LaunchValidationException: com.ti.debug.engine.IApplication$InitializationException: MSP430: Error initializing emulator: No USB FET was found
+' resulted in an error.
+!SUBENTRY 1 com.ti.ccstudio.debug 4 20001 2015-04-27 22:33:46.194
+!MESSAGE com.ti.debug.engine.IApplication$InitializationException: MSP430: Error initializing emulator: No USB FET was found
+
+!STACK 0
+com.ti.ccstudio.debug.launch.LaunchValidationException: com.ti.debug.engine.IApplication$InitializationException: MSP430: Error initializing emulator: No USB FET was found
+
+	at com.ti.ccstudio.debug.service.ApplicationService$2.onEvent(ApplicationService.java:203)
+	at com.ti.ccstudio.debug.service.ApplicationService$2.onEvent(ApplicationService.java:1)
+	at com.ti.debug.engine.impl.Application$3$1.run(Application.java:294)
+Caused by: com.ti.debug.engine.IApplication$InitializationException: MSP430: Error initializing emulator: No USB FET was found
+
+	at com.ti.debug.engine.impl.Application.getInitializationException(Application.java:371)
+	at com.ti.debug.engine.impl.Application.postConfigure(Application.java:362)
+	at com.ti.debug.engine.impl.Application.access$500(Application.java:56)
+	at com.ti.debug.engine.impl.Application$3$1.run(Application.java:284)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:35:27.423
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: No USB FET was found
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:35:27.767
+!MESSAGE DS_ERROR: Error initializing emulator:
+No USB FET was found
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:37:20.581
+!MESSAGE DS_ERROR: MSP430: JTAG Communication Error 
+
