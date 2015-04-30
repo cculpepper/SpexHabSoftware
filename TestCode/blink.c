@@ -196,10 +196,13 @@ void __attribute__ ((interrupt(USCI_A0_VECTOR))) USCI_A0_ISR (void)
 __interrupt void Timer_A_Delay (void){
 
 	LPM0_EXIT;
+	TA1CCR0 = 0;//Stop the counter.
+
 
 }
 #pragma vector= TRAPINT_VECTOR
-__interrupt void TRAPINT_ISR(void)
+__interrupt void TRAPINT_ISR	  TA1CCR0 = cycles;
+(void)
 {
   __no_operation();
 }

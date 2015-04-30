@@ -1,7 +1,7 @@
 ******************************************************************************
-                  MSP430 Linker PC v4.4.3                      
+                  MSP430 Linker Unix v4.4.3                    
 ******************************************************************************
->> Linked Mon Apr 27 22:35:20 2015
+>> Linked Wed Apr 29 13:44:24 2015
 
 OUTPUT FILE NAME:   <TestCode.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 0000441a
@@ -99,10 +99,6 @@ section   page    origin      length       input sections
 .init_array 
 *          0    00004400    00000000     UNINITIALIZED
 
-.stack     0    00002360    000000a0     UNINITIALIZED
-                  00002360    00000004     rts430x_lc_rd_eabi.lib : boot.obj (.stack)
-                  00002364    0000009c     --HOLE--
-
 .text:_isr 
 *          0    00004400    00000042     
                   00004400    0000001a     blink.obj (.text:_isr:USCI_A0_ISR)
@@ -118,10 +114,9 @@ section   page    origin      length       input sections
 .ipe:_isr 
 *          0    00004400    00000000     UNINITIALIZED
 
-.const     0    00004442    0000002e     
-                  00004442    0000001a     cw.obj (.const:.string:CwLetterData)
-                  0000445c    0000000a     cw.obj (.const:.string:CwNumberData)
-                  00004466    0000000a     blink.obj (.const:.string)
+.stack     0    00002360    000000a0     UNINITIALIZED
+                  00002360    00000004     rts430x_lc_rd_eabi.lib : boot.obj (.stack)
+                  00002364    0000009c     --HOLE--
 
 $fill000   0    0000ff80    00000004     
                   0000ff80    00000004     --HOLE-- [fill = ffff]
@@ -219,6 +214,11 @@ SYSNMI     0    0000fffc    00000002
 
 .reset     0    0000fffe    00000002     
                   0000fffe    00000002     rts430x_lc_rd_eabi.lib : boot.obj (.reset)
+
+.const     0    00004442    0000002e     
+                  00004442    0000001a     cw.obj (.const:.string:CwLetterData)
+                  0000445c    0000000a     cw.obj (.const:.string:CwNumberData)
+                  00004466    0000000a     blink.obj (.const:.string)
 
 .text      0    00010000    000001fa     
                   00010000    000000cc     cw.obj (.text:cwSend)
