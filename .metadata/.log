@@ -1153,3 +1153,31 @@ No USB FET was found
 !ENTRY com.ti.ccstudio.debug 1 0 2015-04-27 22:37:20.581
 !MESSAGE DS_ERROR: MSP430: JTAG Communication Error 
 
+!SESSION 2015-04-30 17:14:58.663 -----------------------------------------------
+eclipse.buildId=4.4.1.M20140925-0400
+java.version=1.7.0_60
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2015-04-30 17:15:11.850
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2015-04-30 17:15:12.064
+!MESSAGE debugServerDir=C:/ti/ccsv6/ccs_base/DebugServer
+
+!ENTRY org.eclipse.cdt.core 1 0 2015-04-30 17:17:13.410
+!MESSAGE Indexed 'TestCode' (3 sources, 7 headers) in 1.84 sec: 931 declarations; 1,614 references; 0 unresolved inclusions; 6 syntax errors; 0 unresolved names (0%)
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-30 17:17:49.229
+!MESSAGE DS_ERROR: MSP430: Error initializing emulator: No USB FET was found
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-30 17:17:49.650
+!MESSAGE DS_ERROR: Error initializing emulator:
+No USB FET was found
+
+!ENTRY com.ti.ccstudio.debug 1 0 2015-04-30 17:19:12.254
+!MESSAGE DS_ERROR: MSP430: GEL: Encountered a problem loading file: C:\Users\Administrator\workspace_v6_1\SpexHabSoftware\TestCode\Debug\TestCode.out Could not open file
+

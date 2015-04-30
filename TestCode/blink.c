@@ -164,7 +164,7 @@ int main(void)
 
 
   __no_operation(); // For debugger
-  cwSend("AB1TJTEST", 9);
+  cwSend("AB1TJ", 9);
 }
 
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
@@ -201,8 +201,8 @@ __interrupt void Timer_A_Delay (void){
 
 }
 #pragma vector= TRAPINT_VECTOR
-__interrupt void TRAPINT_ISR	  TA1CCR0 = cycles;
-(void)
+__interrupt void TRAPINT_ISR(void)
+
 {
   __no_operation();
 }
