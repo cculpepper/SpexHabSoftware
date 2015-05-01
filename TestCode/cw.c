@@ -63,12 +63,13 @@ const char CwNumberData[10] = {
 
 char cwSend(char* data, int len){
 	//sends stuff...
-	char charLen;
+	signed char charLen;
 	char currChar;
 	char* cwDataPtr;
 	cwDataPtr = data;
+	int index = 0;
 	while((data+len) > cwDataPtr){
-		currChar = *cwDataPtr;
+		currChar = cwDataPtr[index];
 		if (currChar >= 'A' && currChar <= 'Z'){
 			currChar = CwLetterData[currChar - 'A']; /* This sets the current char to the morse binary representation of the letter if it is a letter. */ 
 		} else if (currChar >= '0' && currChar <= '9'){
@@ -91,7 +92,7 @@ char cwSend(char* data, int len){
 			MSP430Delay(DITTIME);
 			charLen--;
 		}
-		cwDataPtr++;
+		index++;
 		MSP430Delay(DAHTIME);
 
 

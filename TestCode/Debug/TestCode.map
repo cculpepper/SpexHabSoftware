@@ -1,7 +1,7 @@
 ******************************************************************************
                   MSP430 Linker PC v4.4.3                      
 ******************************************************************************
->> Linked Thu Apr 30 17:23:27 2015
+>> Linked Thu Apr 30 17:31:31 2015
 
 OUTPUT FILE NAME:   <TestCode.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs_noexit"  address: 0000441a
@@ -79,7 +79,7 @@ MEMORY CONFIGURATION
   INT53                 0000fffa   00000002  00000002  00000000  RWIX
   INT54                 0000fffc   00000002  00000002  00000000  RWIX
   RESET                 0000fffe   00000002  00000002  00000000  RWIX
-  FRAM2                 00010000   00004000  000001fa  00003e06  RWIX
+  FRAM2                 00010000   00004000  00000204  00003dfc  RWIX
 
 
 SECTION ALLOCATION MAP
@@ -220,15 +220,15 @@ SYSNMI     0    0000fffc    00000002
 .reset     0    0000fffe    00000002     
                   0000fffe    00000002     rts430x_lc_rd_eabi.lib : boot.obj (.reset)
 
-.text      0    00010000    000001fa     
-                  00010000    000000cc     cw.obj (.text:cwSend)
-                  000100cc    0000006c     rts430x_lc_rd_eabi.lib : autoinit_wdt.obj (.text:_auto_init_hold_wdt)
-                  00010138    00000060     blink.obj (.text:PCUartInit)
-                  00010198    00000030     cw.obj (.text:MSP430Delay)
-                  000101c8    00000020     blink.obj (.text:main)
-                  000101e8    0000000a     rts430x_lc_rd_eabi.lib : asr16.obj (.text)
-                  000101f2    00000004                            : pre_init.obj (.text:_system_pre_init)
-                  000101f6    00000004                            : exit.obj (.text:abort)
+.text      0    00010000    00000204     
+                  00010000    000000d6     cw.obj (.text:cwSend)
+                  000100d6    0000006c     rts430x_lc_rd_eabi.lib : autoinit_wdt.obj (.text:_auto_init_hold_wdt)
+                  00010142    00000060     blink.obj (.text:PCUartInit)
+                  000101a2    00000030     cw.obj (.text:MSP430Delay)
+                  000101d2    00000020     blink.obj (.text:main)
+                  000101f2    0000000a     rts430x_lc_rd_eabi.lib : asr16.obj (.text)
+                  000101fc    00000004                            : pre_init.obj (.text:_system_pre_init)
+                  00010200    00000004                            : exit.obj (.text:abort)
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
@@ -492,7 +492,7 @@ address   name
 000009ce  AESAXIN_L               
 000004be  BCD2BIN                 
 000004bc  BIN2BCD                 
-000101f6  C$$EXIT                 
+00010200  C$$EXIT                 
 0000043e  CAPTIO0CTL              
 0000043f  CAPTIO0CTL_H            
 0000043e  CAPTIO0CTL_L            
@@ -672,7 +672,7 @@ address   name
 000004c2  MPYS_L                  
 000004c1  MPY_H                   
 000004c0  MPY_L                   
-00010198  MSP430Delay             
+000101a2  MSP430Delay             
 000004c8  OP2                     
 000004e2  OP2H                    
 000004e3  OP2H_H                  
@@ -746,7 +746,7 @@ address   name
 00000236  PBSELC                  
 00000237  PBSELC_H                
 00000236  PBSELC_L                
-00010138  PCUartInit              
+00010142  PCUartInit              
 00000324  PJDIR                   
 00000325  PJDIR_H                 
 00000324  PJDIR_L                 
@@ -1075,19 +1075,19 @@ UNDEFED   __TI_INITARRAY_Limit
 0000fffc  __TI_int54              
 ffffffff  __binit__               
 ffffffff  __c_args__              
-000101e8  __mspabi_srai           
-000100cc  _auto_init_hold_wdt     
+000101f2  __mspabi_srai           
+000100d6  _auto_init_hold_wdt     
 0000441a  _c_int00_noargs_noexit  
 0000fffe  _reset_vector           
 00002360  _stack                  
-000101f2  _system_pre_init        
-000101f6  abort                   
+000101fc  _system_pre_init        
+00010200  abort                   
 ffffffff  binit                   
 00010000  cwSend                  
 00004400  fram_ipe_end            
 00004400  fram_ipe_start          
 00004400  fram_rx_start           
-000101c8  main                    
+000101d2  main                    
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -1930,14 +1930,14 @@ address   name
 0000fffc  __TI_int54              
 0000fffe  _reset_vector           
 00010000  cwSend                  
-000100cc  _auto_init_hold_wdt     
-00010138  PCUartInit              
-00010198  MSP430Delay             
-000101c8  main                    
-000101e8  __mspabi_srai           
-000101f2  _system_pre_init        
-000101f6  C$$EXIT                 
-000101f6  abort                   
+000100d6  _auto_init_hold_wdt     
+00010142  PCUartInit              
+000101a2  MSP430Delay             
+000101d2  main                    
+000101f2  __mspabi_srai           
+000101fc  _system_pre_init        
+00010200  C$$EXIT                 
+00010200  abort                   
 ffffffff  __binit__               
 ffffffff  __c_args__              
 ffffffff  binit                   

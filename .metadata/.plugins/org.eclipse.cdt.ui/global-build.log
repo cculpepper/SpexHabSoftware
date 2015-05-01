@@ -160,3 +160,128 @@ remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recomm
 ' '
 
 **** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" all 
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 81: warning #188-D: pointless comparison of unsigned integer with zero
+"../cw.c", line 106: warning #994-D: missing return statement at end of non-void function "cwSend"
+"../cw.c", line 73: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 75: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 100: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+'Finished building: ../cw.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "./cw.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" all 
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 106: warning #994-D: missing return statement at end of non-void function "cwSend"
+"../cw.c", line 73: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 75: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 100: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+'Finished building: ../cw.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "./cw.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" all 
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 107: warning #994-D: missing return statement at end of non-void function "cwSend"
+"../cw.c", line 72: remark #2553-D: (ULP 14.1) Array index (involving "index") of type "int". Recommend using "unsigned int"
+"../cw.c", line 74: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 76: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 101: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+'Finished building: ../cw.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "./cw.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 183: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"../blink.c", line 203: warning #2580-D: pragma vector= accepts numeric arguments or "unused_interrupts" but not TRAPINT_VECTOR
+'Finished building: ../blink.c'
+' '
+'Building file: ../cw.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="cw.pp"  "../cw.c"
+"../cw.c", line 107: warning #994-D: missing return statement at end of non-void function "cwSend"
+"../cw.c", line 72: remark #2553-D: (ULP 14.1) Array index (involving "index") of type "int". Recommend using "unsigned int"
+"../cw.c", line 74: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 76: remark #2553-D: (ULP 14.1) Array index (involving "currChar") of type "int". Recommend using "unsigned int"
+"../cw.c", line 101: remark #1544-D: (ULP 13.1) Detected loop counting up. Recommend loops count down as detecting zeros is easier
+'Finished building: ../cw.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "./cw.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project TestCode ****
+
+"C:\\ti\\ccsv6\\utils\\bin\\gmake" all 
+'Building file: ../blink.c'
+'Invoking: MSP430 Compiler'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --include_path="C:/ti/ccsv6/ccs_base/msp430/include" --include_path="C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal --preproc_with_compile --preproc_dependency="blink.pp"  "../blink.c"
+"../blink.c", line 39: warning #112-D: statement is unreachable
+"../blink.c", line 183: remark #1528-D: (ULP 3.1) Detected flag polling using UCA0IFG. Recommend using an interrupt combined with enter LPMx and ISR
+"../blink.c", line 203: warning #2580-D: pragma vector= accepts numeric arguments or "unused_interrupts" but not TRAPINT_VECTOR
+'Finished building: ../blink.c'
+' '
+'Building target: TestCode.out'
+'Invoking: MSP430 Linker'
+"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/bin/cl430" -vmspx --abi=eabi --data_model=restricted --use_hw_mpy=F5 --advice:power="all" --advice:hw_config="all" -g --define=__MSP430FR5969__ --diag_warning=225 --display_error_number --diag_wrap=off --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 --printf_support=minimal -z -m"TestCode.map" --heap_size=160 --stack_size=160 --cinit_hold_wdt=on -i"C:/ti/ccsv6/ccs_base/msp430/include" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/lib" -i"C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3/include" -i"C:/ti/ccsv6/ccs_base/msp430/lib/5xx_6xx_FRxx" -i"C:/ti/ccsv6/ccs_base/msp430/lib/FR59xx" --reread_libs --priority --warn_sections --display_error_number --diag_wrap=off --xml_link_info="TestCode_linkInfo.xml" --use_hw_mpy=F5 --rom_model -o "TestCode.out" "./blink.obj" "./cw.obj" "../lnk_msp430fr5969.cmd"  -l"libmath.a" -l"libc.a" 
+<Linking>
+remark #10372-D: (ULP 4.1) Detected uninitialized Port A in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+remark #10372-D: (ULP 4.1) Detected uninitialized Port B in this project. Recommend initializing all unused ports to eliminate wasted current consumption on unused pins.
+'Finished building target: TestCode.out'
+' '
+
+**** Build Finished ****

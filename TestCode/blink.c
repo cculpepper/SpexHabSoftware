@@ -164,7 +164,7 @@ int main(void)
 
 
   __no_operation(); // For debugger
-  cwSend("AB1TJ", 9);
+  cwSend("BBBBB", 6);
 }
 
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
