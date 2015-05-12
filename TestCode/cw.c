@@ -48,6 +48,7 @@ const char CwLetterData[26] = {
 	0x86
 };  
 const char CwNumberData[10] = {
+	0xA0,
 	0xB0,
 	0xB8,
 	0xBC,
@@ -56,8 +57,7 @@ const char CwNumberData[10] = {
 	0xAF,
 	0xA7,
 	0xA3,
-	0xA1,
-	0xA0};
+	0xA1};
 
 
 
@@ -68,7 +68,7 @@ char cwSend(char* data, int len){
 	char* cwDataPtr;
 	cwDataPtr = data;
 	int index = 0;
-	while((data+len) > cwDataPtr){
+	while(index < len){
 		currChar = cwDataPtr[index];
 		if (currChar >= 'A' && currChar <= 'Z'){
 			currChar = CwLetterData[currChar - 'A']; /* This sets the current char to the morse binary representation of the letter if it is a letter. */ 
@@ -79,15 +79,17 @@ char cwSend(char* data, int len){
 		}
 
 		charLen = (currChar >> 5); /* This is the length of the morse code char, in the top 3 bits*/ 
+		currChar = currChar << 3;
 		while ( charLen > 0 ){
-			LED1_ON();
-			if (currChar & ( 0x80 >> (5-charLen))){
+			LED2_ON();
+			if (currChar & 0x80){
 				/* Wait for a dit*/
 				MSP430Delay(DITTIME);
 			} else {
 				MSP430Delay(DAHTIME);
 			}
-			LED1_OFF();
+			currChar = currChar << 1;
+			LED2_OFF();
 			/* A little bit crazy, passes to the sender, the current bit. Ands the current morse byte with a shifted 1  to get the current character*/ 
 			MSP430Delay(DITTIME);
 			charLen--;
@@ -99,10 +101,11 @@ char cwSend(char* data, int len){
 
 	}
 	for (charLen = 0; charLen < 10; charLen++){
-		LED1_ON();
+		LED2_ON();
 		MSP430Delay(5000);
-		LED1_OFF();
+		LED2_OFF();
 		MSP430Delay(5000);
 	}
+	MSP430Delay(1000000);
 }
  

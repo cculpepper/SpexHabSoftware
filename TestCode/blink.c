@@ -1,44 +1,3 @@
-//***************************************************************************************
-//  MSP430 Blink the LED Demo - Software Toggle P1.0
-//
-//  Description; Toggle P1.0 by xor'ing P1.0 inside of a software loop.
-//  ACLK = n/a, MCLK = SMCLK = default DCO
-//
-//                MSP430x5xx
-//             -----------------
-//         /|\|              XIN|-
-//          | |                 |
-//          --|RST          XOUT|-
-//            |                 |
-//            |             P1.0|-->LED
-//
-//  J. Stevenson
-//  Texas Instruments, Inc
-//  July 2013
-//  Built with Code Composer Studio v5
-//***************************************************************************************
-
-#include <msp430.h>
-
-int main2(void) {
-    WDTCTL = WDTPW | WDTHOLD;               // Stop watchdog timer
-    PM5CTL0 &= ~LOCKLPM5;                   // Disable the GPIO power-on default high-impedance mode
-                                            // to activate previously configured port settings
-    P1DIR |= 0x01;                          // Set P1.0 to output direction
-
-    for(;;) {
-        volatile unsigned int i;            // volatile to prevent optimization
-
-        P1OUT ^= 0x01;                      // Toggle P1.0 using exclusive-OR
-
-        i = 10000;                          // SW Delay
-        do i--;
-        while(i != 0);
-    }
-
-    return 0;
-}
-
 
 /* --COPYRIGHT--,BSD_EX
  * Copyright (c) 2012, Texas Instruments Incorporated
@@ -120,6 +79,53 @@ int main2(void) {
 #include "msp430.h"
 #include "cw.h"
 #include "LED1.h"
+#define MAXRXBUFF 80
+#define MAXTXBUFF 80
+char UARTRXBuf[MAXRXBUFF];
+char UARTTXBuf[MAXTXBUFF];
+int UARTTXLen;
+int UARTRXLen;
+int UARTTXOutIndex;
+char UARTSending; // Used to not transmit until the string is there.
+
+
+int I2CRXIndex;
+char** I2CRXBuffer;
+int I2CRXLen;
+
+I2CInit(void){
+	  P1SEL1 |= BIT6 | BIT7;                    // I2C pins
+
+	  // Disable the GPIO power-on default high-impedance mode to activate
+	  // previously configured port settings
+	  PM5CTL0 &= ~LOCKLPM5;
+
+	  // Configure USCI_B0 for I2C mode
+	  UCB0CTLW0 |= UCSWRST;                     // Software reset enabled
+	  UCB0CTLW0 |= UCMODE_3 | UCMST | UCSYNC;   // I2C mode, Master mode, sync
+	  UCB0CTLW1 |= UCASTP_2;                    // Automatic stop generated
+	                                            // after UCB0TBCNT is reached
+	  UCB0BRW = 0x0008;                         // baudrate = SMCLK / 8
+	  //UCB0TBCNT = 0x0005;                       // number of bytes to be received
+	  //UCB0I2CSA = 0x0048;                       // Slave address
+	  //UCB0CTL1 &= ~UCSWRST;
+	  //UCB0IE |= UCRXIE | UCNACKIE | UCBCNTIE;
+
+	  //The above will need to be done when recieving bytes.
+
+}
+char I2CReadByte(char add, char reg){
+	char ret;
+	UCB0TBCNT = 0x0001;                       // number of bytes to be received
+	UCB0I2CSA = add;                       // Slave address
+	I2CRXBuffer = &ret;
+	UCB0TXBUF = reg;
+
+
+	UCB0CTL1 &= ~UCSWRST;
+	UCB0IE |= UCRXIE | UCNACKIE | UCBCNTIE;
+
+}
 void PCUartInit(void){
 	  // Configure GPIO
 	  P2SEL1 |= BIT0 | BIT1;                    // USCI_A0 UART operation
@@ -150,21 +156,64 @@ void PCUartInit(void){
 	                                            // UCBRSx value = 0x53 (See UG)
 	  UCA0BR1 = 0;
 	  UCA0CTL1 &= ~UCSWRST;                     // Initialize eUSCI
-	  UCA0IE |= UCRXIE;
+	  UCA0IE |= UCRXIE | UCTXIE;
+	  UARTSending = 0;
+	  UARTTXLen = 0;
+	  UARTRXLen = 0;
+	  UARTTXOutIndex =0;
+}
+void putString(char* str){
+	int i;
+	char curr;
+	i = 0;
+	curr = str[i];
+	while (curr){
+		UARTTXBuf[UARTTXLen++] = curr;
+		curr = str[++i];
+	}
+	UARTSending = 1;
+	UCA0IE |=  UCTXIE;
+}
+void putChar(char ch){
+	UARTTXBuf[UARTTXLen++] = ch;
+}
+void putNum(int num){
+	char ch;
+	ch = (num / 10000) + '0';
+	putChar(ch);
+	num %= 10000;
+	ch = (num / 1000) + '0';
+	putChar(ch);
+	num %= 1000;
+	ch = (num / 100) + '0';
+	putChar(ch);
+	num %= 100;
+	ch = (num / 10) + '0';
+	putChar(ch);
+	num %= 10;
+	ch = num + '0';
+	putChar(ch);
 
 }
 int main(void)
 {
   WDTCTL = WDTPW | WDTHOLD;                 // Stop Watchdog
   PCUartInit();
-  LED1INIT();
+  LED2INIT();
            // Enable USCI_A0 RX interrupt
 
   //__bis_SR_register(LPM3_bits | GIE);       // Enter LPM3, interrupts enabled
 
 
   __no_operation(); // For debugger
-  cwSend("BBBBB", 6);
+  //I2CInit()
+  for (;;){
+	  putString("AB1TJ IS OVER ");
+	  putNum(9000);
+	  putString(" GOOD \r\n");
+  cwSend("AB1TJ", 5);
+  putString("AB1TJ");
+  }
 }
 
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
@@ -176,19 +225,32 @@ void __attribute__ ((interrupt(USCI_A0_VECTOR))) USCI_A0_ISR (void)
 #error Compiler not supported!
 #endif
 {
-  switch(__even_in_range(UCA0IV, USCI_UART_UCTXCPTIFG))
-  {
-    case USCI_NONE: break;
-    case USCI_UART_UCRXIFG:
-      while(!(UCA0IFG&UCTXIFG));
-      UCA0TXBUF = UCA0RXBUF;
-      __no_operation();
-      break;
-    case USCI_UART_UCTXIFG: break;
-    case USCI_UART_UCSTTIFG: break;
-    case USCI_UART_UCTXCPTIFG: break;
-  }
-  LED1_TOGGLE();
+  //switch(__even_in_range(UCA0IV, USCI_UART_UCTXCPTIFG)){
+    //if ( USCI_NONE){}
+    if ( USCI_UART_UCRXIFG){
+      if (UARTRXLen < MAXRXBUFF){
+    	  UARTRXBuf[UARTRXLen++] = UCA0RXBUF;
+      }
+    }
+    if( USCI_UART_UCTXIFG){
+    	if (UARTSending){
+			if (UARTTXOutIndex < UARTTXLen){
+			    while(!(UCA0IFG & UCTXIFG));
+				UCA0TXBUF = UARTTXBuf[UARTTXOutIndex++];
+			} else {
+				UARTSending = 0;
+				UCA0IE &=  ~UCTXIE;
+				UARTTXOutIndex =0;
+				UARTTXLen = 0;
+			}
+    	} else {
+			UCA0IE &=  ~UCTXIE;
+    	}
+    }
+    //case USCI_UART_UCSTTIFG: break;
+    //case USCI_UART_UCTXCPTIFG: break;
+
+  //LED1_TOGGLE();
 }
 // Timer A0 interrupt service routine
 
@@ -205,4 +267,39 @@ __interrupt void TRAPINT_ISR(void)
 
 {
   __no_operation();
+}
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
+#pragma vector = USCI_B0_VECTOR
+__interrupt void USCI_B0_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(USCI_B0_VECTOR))) USCI_B0_ISR (void)
+#else
+#error Compiler not supported!
+#endif
+{
+  switch(__even_in_range(UCB0IV, USCI_I2C_UCBIT9IFG))
+  {
+    case USCI_NONE:          break;         // Vector 0: No interrupts
+    case USCI_I2C_UCALIFG:   break;         // Vector 2: ALIFG
+    case USCI_I2C_UCNACKIFG: break;         // Vector 4: NACKIFG
+    case USCI_I2C_UCSTTIFG:  break;         // Vector 6: STTIFG
+    case USCI_I2C_UCSTPIFG:                 // Vector 8: STPIFG
+      TXData = 0;
+      UCB0IFG &= ~UCSTPIFG;                 // Clear stop condition int flag
+      break;
+    case USCI_I2C_UCRXIFG3:  break;         // Vector 10: RXIFG3
+    case USCI_I2C_UCTXIFG3:  break;         // Vector 12: TXIFG3
+    case USCI_I2C_UCRXIFG2:  break;         // Vector 14: RXIFG2
+    case USCI_I2C_UCTXIFG2:  break;         // Vector 16: TXIFG2
+    case USCI_I2C_UCRXIFG1:  break;         // Vector 18: RXIFG1
+    case USCI_I2C_UCTXIFG1:  break;         // Vector 20: TXIFG1
+    case USCI_I2C_UCRXIFG0:  break;         // Vector 22: RXIFG0
+    case USCI_I2C_UCTXIFG0:                 // Vector 24: TXIFG0
+      UCB0TXBUF = TXData++;
+      break;
+    case USCI_I2C_UCBCNTIFG: break;         // Vector 26: BCNTIFG
+    case USCI_I2C_UCCLTOIFG: break;         // Vector 28: clock low timeout
+    case USCI_I2C_UCBIT9IFG: break;         // Vector 30: 9th bit
+    default: break;
+  }
 }
