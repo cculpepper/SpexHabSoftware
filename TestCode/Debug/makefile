@@ -7,6 +7,7 @@ SHELL = cmd.exe
 CG_TOOL_ROOT := C:/ti/ccsv6/tools/compiler/ti-cgt-msp430_4.4.3
 
 ORDERED_OBJS += \
+"./TII2C.obj" \
 "./blink.obj" \
 "./cw.obj" \
 "../lnk_msp430fr5969.cmd" \
@@ -148,8 +149,8 @@ TestCode.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "blink.pp" "cw.pp" 
-	-$(RM) "blink.obj" "cw.obj" 
+	-$(RM) "TII2C.pp" "blink.pp" "cw.pp" 
+	-$(RM) "TII2C.obj" "blink.obj" "cw.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

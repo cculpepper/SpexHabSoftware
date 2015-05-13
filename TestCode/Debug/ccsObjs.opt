@@ -1,1 +1,1 @@
-"./blink.obj" "./cw.obj" "../lnk_msp430fr5969.cmd" -l"libmath.a" -l"libc.a" 
+"./TII2C.obj" "./blink.obj" "./cw.obj" "../lnk_msp430fr5969.cmd" -l"libmath.a" -l"libc.a" 
