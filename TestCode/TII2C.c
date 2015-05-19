@@ -73,7 +73,7 @@ void TI_USCI_I2C_receiveinit(unsigned char slave_address,
 //------------------------------------------------------------------------------
 void TI_USCI_I2C_transmitinit(unsigned char slave_address,
 		unsigned char prescale){
-	P1SEL1 |= SDA_PIN + SCL_PIN;                 // Assign I2C pins to USCI_B0
+	P3SEL1 |= SDA_PIN + SCL_PIN;                 // Assign I2C pins to USCI_B0
 	UCB0CTL1 = UCSWRST;                        // Enable SW reset
 	UCB0CTLW0 = UCMST + UCMODE_3 + UCSYNC;       // I2C Master, synchronous mode
 	UCB0CTL1 = UCSSEL_2 + UCSWRST;              // Use SMCLK, keep SW reset

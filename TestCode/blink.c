@@ -79,6 +79,7 @@
 #include "msp430.h"
 #include "cw.h"
 #include "LED1.h"
+#include "TII2C.h"
 #define MAXRXBUFF 80
 #define MAXTXBUFF 80
 char UARTRXBuf[MAXRXBUFF];
@@ -198,8 +199,10 @@ void putNum(int num){
 int main(void)
 {
   WDTCTL = WDTPW | WDTHOLD;                 // Stop Watchdog
-  PCUartInit();
+  //PCUartInit();
   LED2INIT();
+
+  PM5CTL0 &= ~LOCKLPM5;
            // Enable USCI_A0 RX interrupt
 
   //__bis_SR_register(LPM3_bits | GIE);       // Enter LPM3, interrupts enabled
@@ -207,11 +210,13 @@ int main(void)
 
   __no_operation(); // For debugger
   //I2CInit()
+  TI_USCI_I2C_transmitinit(0x88, 0);
   for (;;){
+	  TI_USCI_I2C_transmit(1, "A");
 	  putString("AB1TJ IS OVER ");
 	  putNum(9000);
 	  putString(" GOOD \r\n");
-  cwSend("AB1TJ", 5);
+  cwSend("AB1TJ", 1);
   putString("AB1TJ");
   }
 }
