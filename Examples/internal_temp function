@@ -1,0 +1,76 @@
+//basically compartmentalized the Ti example code, not sure i completely did it right...
+//ADC10 changed to ADC12 as the MSP430FR5969 has an ADC12 and not 10 
+//not completely sure how to handle that interrupt routine and its location
+
+
+
+#define CALADC12_15V_30C  *((unsigned int *)0x1A1A)   // Temperature Sensor Calibration-30 C
+                                                      //See device datasheet for TLV table memory mapping (page 106)
+#define CALADC12_15V_85C  *((unsigned int *)0x1A1C)   // Temperature Sensor Calibration-85 C
+
+volatile long temp;
+volatile long IntDegF;
+volatile long IntDegC;
+
+// ADC12 interrupt service routine
+#if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
+#pragma vector=ADC12_VECTOR
+__interrupt void ADC12_ISR(void)
+#elif defined(__GNUC__)
+void __attribute__ ((interrupt(ADC12_VECTOR))) ADC12_ISR (void)
+#else
+#error Compiler not supported!
+#endif
+{
+  switch(__even_in_range(ADC12IV,12))
+  {
+    case  0: break;                          // No interrupt
+    case  2: break;                          // conversion result overflow
+    case  4: break;                          // conversion time overflow
+    case  6: break;                          // ADC12HI
+    case  8: break;                          // ADC12LO
+    case 10: break;                          // ADC12IN
+    case 12: temp = ADC12MEM0;         
+             __bic_SR_register_on_exit(LPM4_bits);                                              
+             break;                          // Clear CPUOFF bit from 0(SR)                         
+    default: break; 
+  }  
+}
+
+void internal_temp()
+{
+  WDTCTL = WDTPW + WDTHOLD;                 // Stop WDT
+  
+  // Configure ADC12 - Pulse sample mode; ADC12SC trigger
+  ADC12CTL0 = ADC12SHT_8 + ADC12ON;         // 16 ADC12CLKs; ADC ON,temperature sample period>30us
+  ADC12CTL1 = ADC12SHP + ADC12CONSEQ_0;     // s/w trig, single ch/conv
+  ADC12CTL2 = ADC12RES;                     // 10-bit conversion results
+  ADC12MCTL0 = ADC12SREF_1 + ADC12INCH_10;  // ADC input ch A10 => temp sense  
+  
+  // Configure internal reference
+  while(REFCTL0 & REFGENBUSY);              // If ref generator busy, WAIT
+  REFCTL0 |= REFVSEL_0+REFON;               // Select internal ref = 1.5V 
+                                            // Internal Reference ON   
+  ADC12IE |=ADC12IE0;                       // enable the Interrupt request for a completed ADC12_B conversion
+  
+  __delay_cycles(400);                      // Delay for Ref to settle
+  
+  while(1)
+  {
+    ADC12CTL0 |= ADC12ENC + ADC12SC;        // Sampling and conversion start
+	
+	__bis_SR_register(LPM4_bits + GIE);     // LPM4 with interrupts enabled
+    __no_operation();
+	
+	// Temperature in Celsius
+    // The temperature (Temp, буC)=
+    IntDegC = (temp - CALADC12_15V_30C) *  (85-30)/(CALADC12_15V_85C-CALADC12_15V_30C) +30;
+
+    // Temperature in Fahrenheit
+    // Tf = (9/5)*Tc + 32
+    IntDegF = 9*IntDegC/5+32; 
+
+    __no_operation();                       // SET BREAKPOINT HERE
+  
+  }  
+}
