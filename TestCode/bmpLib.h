@@ -1,4 +1,4 @@
-// bmpLib.h
+/ bmpLib.h
 //
 //****************************************************************************************************
 // Author:
@@ -80,6 +80,7 @@ extern void BMP180GetRawTemp(void);
 extern void BMP180GetTemp(tBMP180Cals *calInst);
 extern void BMP180GetRawPressure(uint8_t oss);
 extern void BMP180GetPressure(uint8_t oss, tBMP180Cals *calInst);
+extern void BMP180Init(void);
 
 
 #endif /* BMPLIB_H_ */

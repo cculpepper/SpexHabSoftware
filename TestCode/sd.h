@@ -5,9 +5,10 @@
  *      Author: Nipun Gunawardena
  */
 
-#ifndef MAIN_H_
-#define MAIN_H_
-
+#include "./FatFS/ff.h"
+#ifndef SD_H_
+#define SD_H_
+int SDOpenFile ( FIL *logfile);
 #define MCLK_FREQUENCY 1000000		// Used in mmc.c but is project specific
 
-#endif /* MAIN_H_ */
+#endif /* SD_H_ */

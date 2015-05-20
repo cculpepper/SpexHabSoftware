@@ -24,9 +24,8 @@
 // Includes ------------------------------------------------------------------------------------------
 #include <msp430.h>
 #include <stdint.h>
-#include "main.h"
+#include "SWI2C,h"
 #include "bmpLib.h"
-
 
 
 
@@ -53,23 +52,32 @@ void BMP180GetCalVals(tBMP180Cals *calInst){
 	UCB0IE &= ~UCRXIE;						  // Set rx interrupt
 	UCB0IE &= ~UCTXIE;						  // Clear tx interrupt
 
+#define BMP180_READ_ADDR 0xEF
+#define BMP180_WRITE_ADDR 0xEE
 	while(bmpCalCount < 11){
-		UCB0CTLW0 |= UCTXSTT;				// Send start
-		while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-		UCB0TXBUF = bmpCalRegs[bmpCalCount];// Send data byte
-		while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-		UCB0CTLW0 &= ~UCTR;					// Change to receive
-		UCB0CTLW0 |= UCTXSTT;				// Send restart
-		while(UCB0CTLW0 & UCTXSTT);			// Wait for restart
+		SWI2CStart();
+		sendByteInput(BMP180_WRITE_ADDR);
+		
+		if (receiveAck()){
+			return -1;
+		}
+		sendByteInput(bmpCalRegs[bmpCalCount]);
 
-		while(!(UCB0IFG & UCRXIFG0));		// Wait for RX interrupt flag
-		bmpCalBytes[2*bmpCalCount] = UCB0RXBUF;	// Read rxbuffer
-		while(!(UCB0IFG & UCRXIFG0));		// Wait for RX interrupt flag
-		bmpCalBytes[2*bmpCalCount+1] = UCB0RXBUF;	// Read rxbuffer
-		while(UCB0CTLW0 & UCTXSTP);		// Wait for stop
+		
+		if (receiveAck()){
+			return -1;
+		}
+		SWI2CStop();
+		SWI2CStart();
+		sendByteInput(BMP180_READ_ADDR);
+		bmpCalBytes[2*bmpCalCount] = receiveByte();
+		sendAck();
 
+		bmpCalBytes[2*bmpCalCount+1] = receiveByte();
+		sendAck();
+		SWI2CStop();
+		SWI2CStart();
 		bmpCalCount++;					// Increment calibration count
-		UCB0CTLW0 |= UCTR;					// tx mode
 	}
 
 	calInst->ac1 = (int16_t) ( (bmpCalBytes[0] << 8) | bmpCalBytes[1] );
@@ -89,47 +97,80 @@ void BMP180GetCalVals(tBMP180Cals *calInst){
 void BMP180GetRawTemp(void){
 
 	// Reset counts
-	g_bmpByteCountEnd = 0x02;		// Each send will be responded with 2 bytes
+	/*g_bmpByteCountEnd = 0x02;		// Each send will be responded with 2 bytes*/
 
-	// Configure USCI_B0 for I2C mode - Sending
-	UCB0CTLW0 |= UCSWRST;                     // Software reset enabled
-	UCB0CTLW0 |= UCMODE_3 | UCMST | UCSYNC | UCTR | UCSSEL__SMCLK;   // I2C mode, Master mode, sync, Sending, SMCLK
-	UCB0BRW = 0x0004;                         // baudrate = SMCLK / 4
-	UCB0CTLW1 |= UCASTP_2;					  // Auto stop
-	UCB0TBCNT = g_bmpByteCountEnd;			  // Auto stop count
-	UCB0I2CSA = BMP180_I2C_ADDRESS;           // Slave address
-	UCB0CTL1 &= ~UCSWRST;					  // Clear reset
-	UCB0IE &= ~UCRXIE;						  // Set rx interrupt
-	UCB0IE &= ~UCTXIE;						  // Clear tx interrupt
+	/*// Configure USCI_B0 for I2C mode - Sending*/
+	/*UCB0CTLW0 |= UCSWRST;                     // Software reset enabled*/
+	/*UCB0CTLW0 |= UCMODE_3 | UCMST | UCSYNC | UCTR | UCSSEL__SMCLK;   // I2C mode, Master mode, sync, Sending, SMCLK*/
+	/*UCB0BRW = 0x0004;                         // baudrate = SMCLK / 4*/
+	/*UCB0CTLW1 |= UCASTP_2;					  // Auto stop*/
+	/*UCB0TBCNT = g_bmpByteCountEnd;			  // Auto stop count*/
+	/*UCB0I2CSA = BMP180_I2C_ADDRESS;           // Slave address*/
+	/*UCB0CTL1 &= ~UCSWRST;					  // Clear reset*/
+	/*UCB0IE &= ~UCRXIE;						  // Set rx interrupt*/
+	/*UCB0IE &= ~UCTXIE;						  // Clear tx interrupt*/
+	
+
+	SWI2CStart();
+	sendByteInput(BMP180_WRITE_ADDR);
+	if (receiveAck()){
+		return -1;
+	}
+	sendByteInput(BMP180_REG_CONTROL);
+	if (receiveAck()){
+		return -1;
+	}
+	SWI2CStop();
+	SWI2CStart();
+	sendByteInput(BMP180_WRITE_ADDR);
+	if (receiveAck()){
+		return -1;
+	}
+	sendByteInput(BMP180_READ_TEMP);
+	if (receiveAck()){
+		return -1;
+	}
+	SWI2CStop();
+
+
 
 	// Start transmission
-	UCB0CTLW0 |= UCTXSTT;				// Send start
-	while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-	UCB0TXBUF = BMP180_REG_CONTROL;     // Send control register address
-	while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-	UCB0TXBUF = BMP180_READ_TEMP;		// Send temperature measurement start command
-	while(UCB0CTLW0 & UCTXSTP);			// Ensure stop condition got sent
+	/*UCB0CTLW0 |= UCTXSTT;				// Send start*/
+	/*while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag*/
+	/*UCB0TXBUF = BMP180_REG_CONTROL;     // Send control register address*/
+	/*while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag*/
+	/*UCB0TXBUF = BMP180_READ_TEMP;		// Send temperature measurement start command*/
+	/*while(UCB0CTLW0 & UCTXSTP);			// Ensure stop condition got sent*/
 
 	// Setup timer for 4.5ms measurement delay
-	TB0CCTL0 = CCIE;                        // TBCCR0 interrupt enabled
-	TB0CCR0 = 175;							// (175 ticks) * (1 second / 32768 ticks) = 5.3 ms > 4.5 ms required
-	TB0CTL = TBSSEL__ACLK | MC__UP;         // ACLK, up mode
+	/*TB0CCTL0 = CCIE;                        // TBCCR0 interrupt enabled*/
+	/*TB0CCR0 = 175;							// (175 ticks) * (1 second / 32768 ticks) = 5.3 ms > 4.5 ms required*/
+	/*TB0CTL = TBSSEL__ACLK | MC__UP;         // ACLK, up mode*/
 
-	__bis_SR_register(LPM3_bits);           // Enter LPM3 w/ interrupt
+	MSPDelay(450); // Delay 450 us
 
 	// Start transmission
-	UCB0CTLW0 |= UCTXSTT;				// Send start
-	while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-	UCB0TXBUF = BMP180_REG_TEMPDATA;    // Send data byte
-	while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-	UCB0CTLW0 &= ~UCTR;					// Change to receive
-	UCB0CTLW0 |= UCTXSTT;				// Send restart
-	while(UCB0CTLW0 & UCTXSTT);			// Wait for restart
-	while(!(UCB0IFG & UCRXIFG));		// Wait for receive
-	g_bmpValBytes[0] = UCB0RXBUF;		// Receive first byte
-	while(!(UCB0IFG & UCRXIFG));		// Wait for receive
-	g_bmpValBytes[1] = UCB0RXBUF;		// Receive second byte
-	while(UCB0CTLW0 & UCTXSTP);			// Wait for stop
+	SWI2CStart();
+	sendByteInput(BMP180_WRITE_ADDR);
+	if (receiveAck()){
+		return -1;
+	}
+	sendByteInput(BMP180_REG_TEMPDATA);
+	if (receiveAck()){
+		return -1;
+	}
+	SWI2CStop();
+	SWI2CStart();
+	sendByteInput(BMP180_READ_ADDR);
+	if (receiveAck()){
+		return -1;
+	}
+	
+	g_bmpValBytes[0] = receiveByte();		// Receive first byte
+	sendAck();
+	g_bmpValBytes[1] = receiveByte();		// Receive second byte
+	sendAck();
+	SWI2CStop();
 }
 
 
@@ -154,70 +195,70 @@ void BMP180GetTemp(tBMP180Cals *calInst){
 
 void BMP180GetRawPressure(uint8_t oss){
 
-	// Reset counts
-	g_bmpByteCountEnd = 0x03;		// Each send will be responded with 2 bytes
+	SWI2CStart();
+	sendByteInput(BMP180_WRITE_ADDR);
+	if (receiveAck()){
+		return -1;
+	}
+	sendByteInput(BMP180_REG_CONTROL);
+	if (receiveAck()){
+		return -1;
+	}
+	SWI2CStop();
+	SWI2CStart();
+	sendByteInput(BMP180_WRITE_ADDR);
+	if (receiveAck()){
+		return -1;
+	}
+	sendByteInput((BMP180_READ_PRES_BASE + (oss < 6)));	// Send pressure measurement start command;
+	if (receiveAck()){
+		return -1;
+	}
+	SWI2CStop();
 
-	// Configure USCI_B0 for I2C mode - Sending
-	UCB0CTLW0 |= UCSWRST;                     // Software reset enabled
-	UCB0CTLW0 |= UCMODE_3 | UCMST | UCSYNC | UCTR | UCSSEL__SMCLK;   // I2C mode, Master mode, sync, Sending, SMCLK
-	UCB0BRW = 0x0004;                         // baudrate = SMCLK / 4
-	UCB0CTLW1 |= UCASTP_2;					  // Auto stop
-	UCB0TBCNT = g_bmpByteCountEnd;			  // Auto stop count
-	UCB0I2CSA = BMP180_I2C_ADDRESS;           // Slave address
-	UCB0CTL1 &= ~UCSWRST;					  // Clear reset
-	UCB0IE &= ~UCRXIE;						  // Set rx interrupt
-	UCB0IE &= ~UCTXIE;						  // Clear tx interrupt
-
-	// Start transmission
-	UCB0CTLW0 |= UCTXSTT;				// Send start
-	while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-	UCB0TXBUF = BMP180_REG_CONTROL;     // Send control register address
-	while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-	UCB0TXBUF = (BMP180_READ_PRES_BASE + (oss < 6));	// Send pressure measurement start command
-	while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-	UCB0CTLW0 |= UCTXSTP;				// Send stop
-	while(UCB0CTLW0 & UCTXSTP);			// Ensure stop condition got sent
 
 	// Setup timer based on oversampling setting
 	switch(oss){
 	case 0:
-		TB0CCR0 = 375;					// (375 ticks) * (1 second / 32768 ticks) = 11.4 ms > 4.5 ms required
+		MSPDelay(4500);					// (375 ticks) * (1 second / 32768 ticks) = 11.4 ms > 4.5 ms required
 		break;
 	case 1:
-		TB0CCR0 = 450;					// (450 ticks) * (1 second / 32768 ticks) = 13.7 ms > 7.5 ms required
+		MSPDelay(7500);					// (450 ticks) * (1 second / 32768 ticks) = 13.7 ms > 7.5 ms required
 		break;
 	case 2:
-		TB0CCR0 = 650;					// (650 ticks) * (1 second / 32768 ticks) = 19.8 ms > 13.5 ms required
+		MSPDelay(13500);					// (375 ticks) * (1 second / 32768 ticks) = 11.4 ms > 4.5 ms required
 		break;
 	case 3:
-		TB0CCR0 = 1050;					// (1050 ticks) * (1 second / 32768 ticks) = 32.0 ms > 25.5 ms required
+		MSPDelay(25500);					// (375 ticks) * (1 second / 32768 ticks) = 11.4 ms > 4.5 ms required
 		break;
 	default:
-		TB0CCR0 = 1050;					// Safe default value
+		MSPDelay(25500);					// (375 ticks) * (1 second / 32768 ticks) = 11.4 ms > 4.5 ms required
 		break;
 	}
 
-	// Start timer
-	TB0CCTL0 = CCIE;                   // TBCCR0 interrupt enabled
-	TB0CTL = TBSSEL__ACLK | MC__UP;    // ACLK, up mode
-
-	__bis_SR_register(LPM3_bits);      // Enter LPM3 w/ interrupt
-
 	// Start transmission
-	UCB0CTLW0 |= UCTXSTT;				// Send start
-	while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-	UCB0TXBUF = BMP180_REG_PRESSUREDATA;// Send data byte
-	while(!(UCB0IFG & UCTXIFG0));		// Wait for tx interrupt flag
-	UCB0CTLW0 &= ~UCTR;					// Change to receive
-	UCB0CTLW0 |= UCTXSTT;				// Send restart
-	while(UCB0CTLW0 & UCTXSTT);			// Wait for restart
-	while(!(UCB0IFG & UCRXIFG));		// Wait for receive
-	g_bmpValBytes[0] = UCB0RXBUF;		// Receive first byte
-	while(!(UCB0IFG & UCRXIFG));		// Wait for receive
-	g_bmpValBytes[1] = UCB0RXBUF;		// Receive second byte
-	while(!(UCB0IFG & UCRXIFG));		// Wait for receive
-	g_bmpValBytes[2] = UCB0RXBUF;		// Receive third byte
-	while(UCB0CTLW0 & UCTXSTP);			// Wait for stop
+	SWI2CStart();
+	sendByteInput(BMP180_WRITE_ADDR);
+	if (receiveAck()){
+		return -1;
+	}
+	sendByteInput(BMP180_REG_TEMPDATA);
+	if (receiveAck()){
+		return -1;
+	}
+	SWI2CStop();
+	SWI2CStart();
+	sendByteInput(BMP180_READ_ADDR);
+	if (receiveAck()){
+		return -1;
+	}
+	g_bmpValBytes[0] = receiveByte();		// Receive first byte
+	sendAck();
+	g_bmpValBytes[1] = receiveByte();		// Receive second byte
+	sendAck();
+	g_bmpValBytes[2] = receiveByte();		// Receive third byte
+	sendAck();
+	SWI2CStop();
 }
 
 

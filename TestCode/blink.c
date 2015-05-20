@@ -80,6 +80,8 @@
 #include "cw.h"
 #include "LED1.h"
 #include "TII2C.h"
+#include "sd.h"
+#include "bmpLib.h"
 #define MAXRXBUFF 80
 #define MAXTXBUFF 80
 char UARTRXBuf[MAXRXBUFF];
